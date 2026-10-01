@@ -10,6 +10,11 @@ export function addDays(value, count) {
   return date.toISOString().slice(0, 10);
 }
 
+export function nextWeekday(value) {
+  const weekday = new Date(`${value}T12:00:00Z`).getUTCDay();
+  return addDays(value, weekday === 6 ? 2 : weekday === 0 ? 1 : 0);
+}
+
 export function weekStart(value) {
   const day = new Date(`${value}T12:00:00Z`).getUTCDay();
   return addDays(value, -(day === 0 ? 6 : day - 1));

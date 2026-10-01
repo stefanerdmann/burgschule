@@ -1,14 +1,20 @@
-import { addDays, berlinToday, formatDate, isISODate, weekStart } from './date-utils.mjs';
+import { addDays, berlinToday, formatDate, isISODate, nextWeekday, weekStart } from './date-utils.mjs';
 
 const $ = (id) => document.getElementById(id);
 const menu = $('menu');
 const supplied = new URLSearchParams(location.search).get('tag');
 const today = berlinToday();
+const selected = nextWeekday(isISODate(supplied) ? supplied : today);
 const state = {
-  data: null, today, selected: isISODate(supplied) ? supplied : today,
-  week: weekStart(isISODate(supplied) ? supplied : today),
-  screen: 'day', offlineCopy: false, loadError: false,
+  data: null, today, homeDay: nextWeekday(today), selected,
+  week: weekStart(selected), screen: 'day', offlineCopy: false, loadError: false,
 };
+// Existing weekend links lead to Monday, never to a weekend meal.
+if (isISODate(supplied) && supplied !== selected) {
+  const url = new URL(location.href);
+  url.searchParams.set('tag', selected);
+  window.history.replaceState({}, '', url);
+}
 
 function schoolLink(value) {
   try {
@@ -18,7 +24,8 @@ function schoolLink(value) {
 }
 
 function weeks() {
-  return [...new Set([state.today, state.selected, ...Object.keys(state.data?.days || {})]
+  return [...new Set([state.homeDay, state.selected,
+    ...Object.keys(state.data?.days || {}).filter((day) => nextWeekday(day) === day)]
     .map(weekStart))].sort();
 }
 
@@ -45,12 +52,16 @@ function showScreen(screen) {
 
 function navigate(day, historyMode = 'push') {
   if (!isISODate(day)) return;
+  const weekday = nextWeekday(day);
+  const fromWeekendLink = weekday !== day;
+  if (fromWeekendLink && historyMode === 'none') historyMode = 'replace';
+  day = weekday;
   const changed = day !== state.selected;
   state.selected = day;
   state.week = weekStart(day);
   if (historyMode !== 'none' && (changed || historyMode === 'replace')) {
     const url = new URL(location.href);
-    if (day === state.today) url.searchParams.delete('tag');
+    if (day === state.homeDay && !fromWeekendLink) url.searchParams.delete('tag');
     else url.searchParams.set('tag', day);
     window.history[historyMode === 'replace' ? 'replaceState' : 'pushState']({}, '', url);
   }
@@ -68,7 +79,7 @@ function dayStatus(day) {
 function renderStrip() {
   const current = weekStart(state.selected);
   const list = $('days');
-  list.replaceChildren(...Array.from({ length: 7 }, (_, offset) => {
+  list.replaceChildren(...Array.from({ length: 5 }, (_, offset) => {
     const day = addDays(current, offset);
     const button = element('button', `day${state.data?.days[day]?.status === 'ok' ? ' available' : ''}${day === state.selected ? ' selected' : ''}${day === state.today ? ' today' : ''}`);
     button.type = 'button';
@@ -78,7 +89,7 @@ function renderStrip() {
     button.addEventListener('click', () => navigate(day));
     return button;
   }));
-  // Keep the selected day visible on narrow phones (especially Saturday/Sunday).
+  // Keep the selected day visible on especially narrow screens.
   const selected = list.querySelector('.selected');
   if (selected) list.scrollLeft = Math.max(0, selected.offsetLeft - list.offsetLeft - (list.clientWidth - selected.clientWidth) / 2);
 }
@@ -86,8 +97,7 @@ function renderStrip() {
 function renderWeek() {
   const items = weeks();
   const index = items.indexOf(state.week);
-  const finish = addDays(state.week, 6);
-  const range = (week) => `${formatDate(week, { day: 'numeric', month: 'short' })} – ${formatDate(addDays(week, 6), { day: 'numeric', month: 'short', year: 'numeric' })}`;
+  const range = (week) => `${formatDate(week, { day: 'numeric', month: 'short' })} – ${formatDate(addDays(week, 4), { day: 'numeric', month: 'short', year: 'numeric' })}`;
   $('week-range').textContent = range(state.week);
   $('previous-week').disabled = index <= 0;
   $('next-week').disabled = index >= items.length - 1;
@@ -98,7 +108,7 @@ function renderWeek() {
     return option;
   }));
   select.value = state.week;
-  $('week-days').replaceChildren(...Array.from({ length: 7 }, (_, offset) => {
+  $('week-days').replaceChildren(...Array.from({ length: 5 }, (_, offset) => {
     const day = addDays(state.week, offset);
     const row = element('button', `week-day${day === state.today ? ' today' : ''}`);
     row.type = 'button';
@@ -126,12 +136,15 @@ function empty(title, details) {
 }
 
 function renderDaily() {
-  const current = state.selected === state.today;
-  $('view-title').textContent = current ? 'Heute' : formatDate(state.selected, { weekday: 'long' });
+  const home = state.selected === state.homeDay;
+  const weekend = state.homeDay !== state.today;
+  $('view-title').textContent = home ? (weekend ? 'Nächster Montag' : 'Heute') : formatDate(state.selected, { weekday: 'long' });
+  $('day-tab-label').textContent = weekend ? 'Montag' : 'Heute';
+  $('today').textContent = weekend ? 'Zum Montag' : 'Heute';
   const selectedDate = $('selected-date');
   selectedDate.textContent = formatDate(state.selected, { day: 'numeric', month: 'long', year: 'numeric' });
   selectedDate.dateTime = state.selected;
-  $('today').hidden = current;
+  $('today').hidden = home;
   const entry = state.data?.days[state.selected];
   if (entry?.status === 'ok') {
     menu.replaceChildren(
@@ -143,8 +156,6 @@ function renderDaily() {
     menu.replaceChildren(empty('Für diesen Tag kein verlässlich ausgelesener Plan', 'Die Angaben im PDF sind nicht eindeutig zuzuordnen. Bitte das Original-PDF öffnen.'));
   } else if (state.loadError) {
     menu.replaceChildren(empty('Speiseplan gerade nicht verfügbar', 'Bitte später erneut versuchen oder den Speiseplan auf der Schulwebsite öffnen.'));
-  } else if ([0, 6].includes(new Date(`${state.selected}T12:00:00Z`).getUTCDay())) {
-    menu.replaceChildren(empty('Kein Eintrag am Wochenende', 'Am Wochenende ist in den veröffentlichten Plänen kein Mittagessen aufgeführt. Du kannst einen anderen Tag auswählen.'));
   } else {
     menu.replaceChildren(empty('Kein Eintrag für diesen Tag', 'Es liegt für dieses Datum kein verlässlich ausgelesener Plan vor. Bitte die Schulwebsite prüfen oder einen anderen Tag auswählen.'));
   }
@@ -211,22 +222,23 @@ $('week-select').addEventListener('change', (event) => {
   }
 });
 $('open-week').addEventListener('click', () => showScreen('week'));
-$('today').addEventListener('click', () => navigate(state.today));
+$('today').addEventListener('click', () => navigate(state.homeDay));
 for (const button of document.querySelectorAll('.tab')) {
-  button.addEventListener('click', () => button.dataset.screen === 'day' ? navigate(state.today) : showScreen(button.dataset.screen));
+  button.addEventListener('click', () => button.dataset.screen === 'day' ? navigate(state.homeDay) : showScreen(button.dataset.screen));
 }
 window.addEventListener('popstate', () => {
   const day = new URLSearchParams(location.search).get('tag');
-  navigate(isISODate(day) ? day : state.today, 'none');
+  navigate(isISODate(day) ? day : state.homeDay, 'none');
 });
 window.addEventListener('online', renderConnection);
 window.addEventListener('offline', renderConnection);
 setInterval(() => {
   const current = berlinToday();
   if (current !== state.today) {
-    const wasToday = state.selected === state.today;
+    const wasHome = state.selected === state.homeDay;
     state.today = current;
-    if (wasToday) navigate(current, 'replace');
+    state.homeDay = nextWeekday(current);
+    if (wasHome) navigate(state.homeDay, 'replace');
     else render();
   }
 }, 60_000);

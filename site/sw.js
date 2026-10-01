@@ -1,4 +1,4 @@
-const CACHE = 'burgschule-speiseplan-v2';
+const CACHE = 'burgschule-speiseplan-v3';
 const CORE = [
   './', './index.html', './styles.css', './app.mjs', './date-utils.mjs',
   './impressum.html', './datenschutz.html', './manifest.webmanifest', './data/menu.json',
