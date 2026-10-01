@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Schale mit Dampf">
+  <rect width="512" height="512" rx="110" fill="#113a36"/>
+  <path d="M187 137c-31 40 19 53-10 93M260 120c-31 40 19 53-10 93M333 137c-31 40 19 53-10 93" fill="none" stroke="#acd8af" stroke-width="18" stroke-linecap="round"/>
+  <path d="M99 257h314c-12 100-65 150-157 150s-145-50-157-150Z" fill="#f4f5d9"/>
+  <path d="M144 426h224" stroke="#f4f5d9" stroke-width="21" stroke-linecap="round"/>
+  <path d="M106 257h300" stroke="#acd8af" stroke-width="13" stroke-linecap="round"/>
+</svg>

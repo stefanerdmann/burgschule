@@ -1,0 +1,338 @@
+{
+  "schema": 1,
+  "checked_at": "2026-09-29T11:47:42+00:00",
+  "school_url": "https://burgschule-nieder-olm.de/aktuelles/",
+  "fallback_pdf": {
+    "url": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf",
+    "label": "Speiseplan vom 10.8.26 bis 2.10.26"
+  },
+  "sources": {
+    "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf": {
+      "url": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf",
+      "page": "https://burgschule-nieder-olm.de/aktuelles/",
+      "label": "Speiseplan vom 10.8.26 bis 2.10.26",
+      "sha256": "c669b8febe5fbbaa060a3a0e51bf260b8b0a6147919b8b989f4e30f5ee2f9160",
+      "start": "2026-08-10",
+      "end": "2026-10-02"
+    }
+  },
+  "days": {
+    "2026-08-10": {
+      "status": "ok",
+      "menu_i": "Bio-Penne mit Karotten-Lauch-Gemüse und Tomatensauce",
+      "menu_ii": "Bio-Penne mit Karotten-Lauch-Gemüse und Tomatensauce",
+      "dessert": "frische Birne von der Obstbaumplantage",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-08-11": {
+      "status": "ok",
+      "menu_i": "Zucchinicreme-Suppe (c) mit gebackenen Kichererbsen, Roggen- und Dinkelbrot (a2, a1) und Rohkost",
+      "menu_ii": "Zucchinicreme-Suppe (c) mit gebackenen Kichererbsen, Roggen- und Dinkelbrot (a2, a1) und Rohkost",
+      "dessert": "Kuchendessert",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-08-12": {
+      "status": "uncertain",
+      "reason": "menu_ii: Klammerung unvollständig",
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-08-13": {
+      "status": "ok",
+      "menu_i": "Gnocchi-Auflauf mit Spinat, Tomaten und Hirtenkäse (a1, b, c) und Salat mit hausgemachtem Dressing (c, e, k)",
+      "menu_ii": "Gnocchi-Auflauf mit Spinat, Tomaten und Hirtenkäse (a1, b, c) und Salat mit hausgemachtem Dressing (c, e, k)",
+      "dessert": "Heidelbeerjoghurt",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-08-14": {
+      "status": "ok",
+      "menu_i": "Fischnuggets aus Seelachs (F) (d, a1, b, c) mit Kräuterkartoffeln (c) und Erbsen-Karotten-Gemüse (a1, c) und Rohkost",
+      "menu_ii": "vegetarische Fischnuggets auf Gemüsebasis (d, a1, b, c) mit Kräuterkartoffeln (c) und Erbsen-Karotten-Gemüse (a1, c) und Rohkost",
+      "dessert": "Obst vom Markt nach Tagesangebot",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-08-17": {
+      "status": "ok",
+      "menu_i": "Pasta (a1) mit Pilzrahmsoße (a1, c) und frischen Kräutern, Blattsalat mit hausgemachtem Dressing (c, e, k)",
+      "menu_ii": "Pasta (a1) mit Pilzrahmsoße (a1, c) und frischen Kräutern, Blattsalat mit hausgemachtem Dressing (c, e, k)",
+      "dessert": "hausgemachter Fruchtjoghurt",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-08-18": {
+      "status": "ok",
+      "menu_i": "Putenschnitzel (G) „Wiener-Art“ (a1, b, c) Butterkartoffeln (c) und Gurkensalat mit Dill-Joghurt-Dressing ©",
+      "menu_ii": "vegetarisches Schnitzel (a1, b, c, g), Butterkartoffeln (c) und Gurkensalat mit Dill-Joghurt-Dressing ©",
+      "dessert": "frische Wassermelone",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-08-19": {
+      "status": "ok",
+      "menu_i": "Kichererbsen-Karotten-Suppe mit Kokosmilch und Curry, dazu Vollkornbrot (a1) und Rohkost",
+      "menu_ii": "Kichererbsen-Karotten-Suppe mit Kokosmilch und Curry, dazu Vollkornbrot (a1) und Rohkost",
+      "dessert": "Grießpudding",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-08-20": {
+      "status": "ok",
+      "menu_i": "Fischfrikadelle mit Kartoffelpüree, glasierten Karotten und weißer Kräutersauce",
+      "menu_ii": "Schmetterlingsnudeln mit Paprikarahmsauce und Mais",
+      "dessert": "Bananen",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-08-21": {
+      "status": "ok",
+      "menu_i": "gebratener Gemüsetaler mit Kohlrabi-Erbsengemüse und Ofen-Kroketten",
+      "menu_ii": "gebratener Gemüsetaler mit Kohlrabi-Erbsengemüse und Ofen-Kroketten",
+      "dessert": "Apfel-Quark-Dessert",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-08-24": {
+      "status": "ok",
+      "menu_i": "Gemüsecremesuppe (c) mit Croutons (a1), Vollkornbrot (a1) und Rohkost",
+      "menu_ii": "Gemüsecremesuppe (c) mit Croutons (a1), Vollkornbrot (a1) und Rohkost",
+      "dessert": "Schokoladenpudding",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-08-25": {
+      "status": "ok",
+      "menu_i": "Nudeln (a1) mit Tomaten-Käse-Soße (c, k), Blattsalat mit Dressing (c, e, k)",
+      "menu_ii": "Nudeln (a1) mit Tomaten-Käse-Soße (c, k), Blattsalat mit Dressing (c, e, k)",
+      "dessert": "Pflaumen",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-08-26": {
+      "status": "ok",
+      "menu_i": "Frikadelle vom Rind (R) mit einer leichten Zwiebel-Senfsoße (c, e), Dampfkartoffeln und Krautsalat",
+      "menu_ii": "Brokkoli-Medaillon (a1, b, c) mit einer leichten Zwiebel-Senfsoße (c, e), Dampfkartoffeln und Krautsalat",
+      "dessert": "Rote Grütze mit Vanillesauce",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-08-27": {
+      "status": "ok",
+      "menu_i": "Linsen-Süßkartoffel-Dal (k) mit gebratenem Reis, Minzejoghurt (c) und Rohkost",
+      "menu_ii": "Linsen-Süßkartoffel-Dal (k) mit gebratenem Reis, Minzejoghurt (c) und Rohkost",
+      "dessert": "Sonnengereifter Apfel",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-08-28": {
+      "status": "ok",
+      "menu_i": "pochiertes Lachsfilet (F) an Tomaten-Orangen-Soße, Reis mit Erbsen und Rohkost",
+      "menu_ii": "Gemüsemaultaschen mit Brechbohnen und Kräuterfrischkäsesauce",
+      "dessert": "Oma's Apfelkompott",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-08-31": {
+      "status": "ok",
+      "menu_i": "Tomaten-Spinat-Lasagne (a1, c) und Salat mit Dressing (c, e, k)",
+      "menu_ii": "Tomaten-Spinat-Lasagne (a1, c) und Salat mit Dressing (c, e, k)",
+      "dessert": "frischer Pfirsich",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-09-01": {
+      "status": "ok",
+      "menu_i": "Hühnergeschnetzeltes (G) in Rahmsoße (a1, c) mit Kräutern der Provence, gebratenes Zucchini-Pilz-Gemüse und Reis",
+      "menu_ii": "Vegetarisches Geschnetzeltes (a1, g) in Rahmsoße (a1, c) mit Kräutern der Provence, gebratenes Zucchini-Pilz-Gemüse und Reis",
+      "dessert": "hausgemachter Obstjoghurt",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-09-02": {
+      "status": "ok",
+      "menu_i": "Kartoffel-Kohlrabi-Suppe (a1, c, k) mit Vollkornbrot (a1), Linsenaufstrich (k) und Rohkost",
+      "menu_ii": "Kartoffel-Kohlrabi-Suppe (a1, c, k) mit Vollkornbrot (a1), Linsenaufstrich (k) und Rohkost",
+      "dessert": "Mirabellen",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-09-03": {
+      "status": "ok",
+      "menu_i": "Kabeljaufilet (F), Schnittlauch-Thymiansoße (c), Zitronen-Kartoffeln (c) aus dem Ofen und Zucchini-Paprika-Gemüse",
+      "menu_ii": "Mildes Chili sin Carne mit Fladenbrot",
+      "dessert": "Fruchtquark",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-09-04": {
+      "status": "ok",
+      "menu_i": "Gemüsefrikadellen (a1, b) mit Joghurt-Minze-Limetten-Dip (c), Gemüse-Couscous (a1) und Salat mit Dressing (c, e, k)",
+      "menu_ii": "Gemüsefrikadellen (a1, b) mit Joghurt-Minze-Limetten-Dip (c), Gemüse-Couscous (a1) und Salat mit Dressing (c, e, k)",
+      "dessert": "Obstauswahl",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-09-07": {
+      "status": "ok",
+      "menu_i": "Tomatensuppe (c, k) mit Vollkornbrot (a1), Oliven Hummus (f) und Rohkost",
+      "menu_ii": "Tomatensuppe (c, k) mit Vollkornbrot (a1), Oliven Hummus (f) und Rohkost",
+      "dessert": "Kirschquark",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-09-08": {
+      "status": "ok",
+      "menu_i": "Puten-Paprika-Rahmgulasch (G) (a1, c, k) mit Kräuterreis und Rohkost",
+      "menu_ii": "Kartoffel-Gulasch (a1, c, k) mit Kräuterreis und Rohkost",
+      "dessert": "frische Wassermelone",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-09-09": {
+      "status": "ok",
+      "menu_i": "Bio-Spinatravioli (a1, k) und Gemüse-Käse-Soße (c, k) und Salat mit Dressing (c, e, k)",
+      "menu_ii": "Bio-Spinatravioli (a1, k) und Gemüse-Käse-Soße (c, k) und Salat mit Dressing (c, e, k)",
+      "dessert": "hausgemachter Fruchtjoghurt",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-09-10": {
+      "status": "ok",
+      "menu_i": "Rahmspinat (c) mit Salzkartoffeln und Rührei, Rohkost",
+      "menu_ii": "Rahmspinat (c) mit Salzkartoffeln und Rührei, Rohkost",
+      "dessert": "Nektarine",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-09-11": {
+      "status": "ok",
+      "menu_i": "Seelachs in Backteig (F) (a1, b) mit Kräutersoße (a1, c), Bio-Reis und saisonales Buttergemüse",
+      "menu_ii": "Bio-Pasta mit Blumernkohl-Brikkoligemüse und heller Rahmsauce",
+      "dessert": "Weintrauben",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-09-14": {
+      "status": "ok",
+      "menu_i": "Pasta Mista (gemischte Nudeln) (a1) mit Gemüsebolognese, Parmesan (c) und Mix-Salat mit Dressing (c, e, k)",
+      "menu_ii": "Pasta Mista (gemischte Nudeln) (a1) mit Gemüsebolognese, Parmesan (c) und Mix-Salat mit Dressing (c, e, k)",
+      "dessert": "Beerenjoghurt",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-09-15": {
+      "status": "ok",
+      "menu_i": "Süßkartoffel-Karottencremesuppe (c, k) Vollkornbrot (a1) und Rohkost",
+      "menu_ii": "Süßkartoffel-Karottencremesuppe (c, k) Vollkornbrot (a1) und Rohkost",
+      "dessert": "Kuchendessert",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-09-16": {
+      "status": "ok",
+      "menu_i": "Putengeschnetzeltes (K) (c, k) mit Spätzle (a1, b) dazu Salat mit Dressing (c, e, k)",
+      "menu_ii": "Tofu-Geschnetzeltes (a1, g, c, k) mit Spätzlen (a1, b) dazu Salat mit Dressing (c, e, k)",
+      "dessert": "saisonaler Obstkorb",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-09-17": {
+      "status": "ok",
+      "menu_i": "Risoléekartoffeln (kleine Kartoffeln ohne Schale) (c) mit Kräuterquark (c) und Rohkost",
+      "menu_ii": "Risoléekartoffeln (kleine Kartoffeln ohne Schale) (c) mit Kräuterquark (c) und Rohkost",
+      "dessert": "Bananen",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-09-18": {
+      "status": "ok",
+      "menu_i": "Lachsfilet aus dem Ofen (F) mit Zitronengras-Limetten-Soße (f, g) Basmatireis und Wok-Gemüse (f, g) und Rohkost",
+      "menu_ii": "Zartweizen-Gemüsepfanne mit Paprika- und Tomatenwürfel und tomatisierter Bechamelsauce",
+      "dessert": "Sonnengereifter Apfel",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-09-21": {
+      "status": "ok",
+      "menu_i": "Schupfnudeln (a1, b,) mit einer cremigen Tomaten-Frischkäsesoße (c) und Rohkost",
+      "menu_ii": "Schupfnudeln (a1, b,) mit einer cremigen Tomaten-Frischkäsesoße (c) und Rohkost",
+      "dessert": "Griechischer Joghurt mit Honig",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-09-22": {
+      "status": "ok",
+      "menu_i": "Rinderbolognese (R) (k), Nudeln (a1), Parmesan (c) und Mix-Salat und Dressing (c, e, k)",
+      "menu_ii": "vegetarische Bolognese auf Sojabasis (a1, g, k), Nudeln (a1), Parmesan (c) und Mix-Salat und Dressing (c, e, k)",
+      "dessert": "Ananasstücke, leicht gezuckert",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-09-23": {
+      "status": "ok",
+      "menu_i": "Minestrone (ital. Gemüsesuppe mit Reis) (c, e, k) mit Vollkornbrot (a1), Linsenaufstrich (k) und Rohkost",
+      "menu_ii": "Minestrone (ital. Gemüsesuppe mit Reis) (c, e, k) mit Vollkornbrot (a1), Linsenaufstrich (k) und Rohkost",
+      "dessert": "Milchreisdessert mit Fruchtmark",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-09-24": {
+      "status": "ok",
+      "menu_i": "Hausgemachte vegetarische Blechpizza (a1, c) und Gemüserohkost",
+      "menu_ii": "Hausgemachte vegetarische Blechpizza (a1, c) und Gemüserohkost",
+      "dessert": "frischer Apfel vom Obstbauern",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-09-25": {
+      "status": "ok",
+      "menu_i": "Pangasiusfilet (F), Schnittlauch-Thymiansoße (c), Zitronen-Kartoffeln (c) aus dem Ofen und Zucchini-Paprika-Gemüse",
+      "menu_ii": "Gemüseeintopf mit Reiseinlage und frischem Bauernbrot",
+      "dessert": "Überraschungsdessert (auf Nachfrage)",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-09-28": {
+      "status": "ok",
+      "menu_i": "Kartoffelpuffer (a1, b) mit Apfelmus und Rohkost",
+      "menu_ii": "Kartoffelpuffer (a1, b) mit Apfelmus und Rohkost",
+      "dessert": "Kuchendessert",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-09-29": {
+      "status": "ok",
+      "menu_i": "Gyros aus der Hühnerbrust (G) mit Basmatireis und Zaziki (c, Kb) und Rohkost",
+      "menu_ii": "Vegetarisches Gyros (a1, g) mit Basmatireis und Zaziki (c, Kb) und Rohkost",
+      "dessert": "Tafeltrauben",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-09-30": {
+      "status": "ok",
+      "menu_i": "Mais-Paprika-Suppe (c, k) mit Vollkornbrot (a1), Kichererbsen Creme (Hummus) (f) und Rohkost",
+      "menu_ii": "Mais-Paprika-Suppe (c, k) mit Vollkornbrot (a1), Kichererbsen Creme (Hummus) (f) und Rohkost",
+      "dessert": "Erdebeerquark",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-10-01": {
+      "status": "ok",
+      "menu_i": "Lachsfilet (F) mit Spinatsoße (c), Nudeln (a1) und gebratenem Brokkoli-Kirschtomaten-Gemüse",
+      "menu_ii": "Karotteneintopf mit Kartoffeln und frischem Bäckerbrot",
+      "dessert": "Waldbeerengrütze",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    },
+    "2026-10-02": {
+      "status": "ok",
+      "menu_i": "Käsespätzle (a1, b, c) und crémiger Gurkensalat (c, e, k)",
+      "menu_ii": "Käsespätzle (a1, b, c) und crémiger Gurkensalat (c, e, k)",
+      "dessert": "Zwetschgen",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf"
+    }
+  }
+}

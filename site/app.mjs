@@ -1,0 +1,189 @@
+import { addDays, berlinToday, formatDate, isISODate, weekStart } from './date-utils.mjs';
+
+const $ = (id) => document.getElementById(id);
+const menu = $('menu');
+const state = { data: null, today: berlinToday(), selected: null, offlineCopy: false, loadError: false };
+const supplied = new URLSearchParams(location.search).get('tag');
+state.selected = isISODate(supplied) ? supplied : state.today;
+
+function schoolLink(value) {
+  try {
+    const url = new URL(value);
+    return url.protocol === 'https:' && url.hostname === 'burgschule-nieder-olm.de' ? url.href : null;
+  } catch { return null; }
+}
+
+function weeks() {
+  return [...new Set([state.today, state.selected, ...Object.keys(state.data?.days || {})]
+    .map(weekStart))].sort();
+}
+
+function navigate(day, historyMode = 'push') {
+  if (!isISODate(day)) return;
+  state.selected = day;
+  if (historyMode !== 'none') {
+    const url = new URL(location.href);
+    if (day === state.today) url.searchParams.delete('tag');
+    else url.searchParams.set('tag', day);
+    window.history[historyMode === 'replace' ? 'replaceState' : 'pushState']({}, '', url);
+  }
+  render();
+}
+
+function element(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+}
+
+function renderWeeks() {
+  const current = weekStart(state.selected);
+  const items = weeks();
+  const index = items.indexOf(current);
+  const finish = addDays(current, 6);
+  $('week-range').textContent = `${formatDate(current, { day: 'numeric', month: 'short' })} – ${formatDate(finish, { day: 'numeric', month: 'short', year: 'numeric' })}`;
+  $('previous-week').disabled = index <= 0;
+  $('next-week').disabled = index >= items.length - 1;
+  const select = $('week-select');
+  select.replaceChildren(...items.map((week) => {
+    const option = element('option', '', `${formatDate(week, { day: 'numeric', month: 'short' })} – ${formatDate(addDays(week, 6), { day: 'numeric', month: 'short', year: 'numeric' })}`);
+    option.value = week;
+    return option;
+  }));
+  select.value = current;
+  const list = $('days');
+  list.replaceChildren(...Array.from({ length: 7 }, (_, offset) => {
+    const day = addDays(current, offset);
+    const button = element('button', `day${state.data?.days[day]?.status === 'ok' ? ' available' : ''}${day === state.selected ? ' selected' : ''}${day === state.today ? ' today' : ''}`);
+    button.type = 'button';
+    button.setAttribute('aria-label', formatDate(day) + (state.data?.days[day]?.status === 'ok' ? ', Speiseplan vorhanden' : ', kein Speiseplan'));
+    if (day === state.selected) button.setAttribute('aria-current', 'date');
+    button.append(element('span', 'day-name', formatDate(day, { weekday: 'short' })), element('span', 'day-number', day.slice(-2)));
+    button.addEventListener('click', () => navigate(day));
+    return button;
+  }));
+}
+
+function card(title, dish, variant, note) {
+  const article = element('article', `menu-card ${variant}`);
+  article.append(element('h3', '', title), element('p', '', dish));
+  if (note) article.append(element('p', 'reference', note));
+  return article;
+}
+
+function empty(title, details) {
+  const box = element('div', 'empty-card');
+  box.append(element('strong', '', title), element('p', '', details));
+  return box;
+}
+
+function renderDaily() {
+  const today = state.selected === state.today;
+  $('date-context').textContent = today ? 'HEUTE AUF DEM SPEISEPLAN' : 'SPEISEPLAN FÜR DIESEN TAG';
+  $('selected-date').textContent = formatDate(state.selected);
+  $('today').hidden = today;
+  const entry = state.data?.days[state.selected];
+  if (entry?.status === 'ok') {
+    menu.replaceChildren(
+      card('Menü I · Vollkost', entry.menu_i, 'full'),
+      card('Menü II · vegetarisch', entry.menu_ii, 'vegetarian', entry.menu_ii_from_i ? 'Im Original: „siehe Menü I“' : ''),
+      card('Dessert', entry.dessert, 'dessert'),
+    );
+  } else if (entry?.status === 'uncertain') {
+    menu.replaceChildren(empty('Für diesen Tag kein verlässlich ausgelesener Plan', 'Die Angaben im PDF sind nicht eindeutig zuzuordnen. Bitte das Original-PDF öffnen.'));
+  } else if (state.loadError) {
+    menu.replaceChildren(empty('Speiseplan gerade nicht verfügbar', 'Bitte später erneut versuchen oder den Speiseplan auf der Schulwebsite öffnen.'));
+  } else if ([0, 6].includes(new Date(`${state.selected}T12:00:00Z`).getUTCDay())) {
+    menu.replaceChildren(empty('Kein Eintrag am Wochenende', 'Am Wochenende ist in den veröffentlichten Plänen kein Mittagessen aufgeführt. Du kannst einen anderen Tag auswählen.'));
+  } else {
+    menu.replaceChildren(empty('Kein Eintrag für diesen Tag', 'Es liegt für dieses Datum kein verlässlich ausgelesener Plan vor. Bitte die Schulwebsite prüfen oder einen anderen Tag auswählen.'));
+  }
+
+  const provenance = $('provenance');
+  provenance.replaceChildren();
+  const sources = state.data?.sources || {};
+  const source = entry?.source && sources[entry.source]
+    ? sources[entry.source]
+    : Object.values(sources).sort((a, b) => b.end.localeCompare(a.end))[0];
+  if (state.data?.checked_at) {
+    const checked = new Date(state.data.checked_at);
+    provenance.append(element('div', '', `Daten zuletzt geprüft: ${new Intl.DateTimeFormat('de-DE', { timeZone: 'Europe/Berlin', dateStyle: 'medium', timeStyle: 'short' }).format(checked)} Uhr.`));
+  }
+  if (source) {
+    provenance.append(element('div', '', `Originalplan: ${formatDate(source.start, { day: 'numeric', month: 'numeric', year: 'numeric' })} – ${formatDate(source.end, { day: 'numeric', month: 'numeric', year: 'numeric' })}.`));
+  }
+  const pdf = source?.url || state.data?.fallback_pdf?.url;
+  const href = schoolLink(pdf || state.data?.school_url || 'https://burgschule-nieder-olm.de/aktuelles/');
+  if (href) {
+    const link = element('a', '', pdf ? 'Original-PDF bei der Schule öffnen ↗' : 'Speiseplan auf der Schulwebsite prüfen ↗');
+    link.href = href;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    provenance.append(link);
+  }
+}
+
+function renderConnection() {
+  const banner = $('connection');
+  const checked = state.data?.checked_at ? Date.parse(state.data.checked_at) : NaN;
+  const old = !Number.isNaN(checked) && Date.now() - checked > 3 * 86400000;
+  banner.hidden = !(state.offlineCopy || !navigator.onLine || old || state.loadError);
+  if (!banner.hidden) {
+    banner.textContent = state.loadError ? 'Der Plan konnte nicht geladen werden. Bitte das Original auf der Schulwebsite prüfen.'
+      : state.offlineCopy || !navigator.onLine ? 'Offline: Es wird der zuletzt geladene Datenstand angezeigt. Änderungen sind möglicherweise noch nicht enthalten.'
+        : 'Dieser Datenstand wurde seit mehr als drei Tagen nicht aktualisiert. Bitte das Original-PDF prüfen.';
+  }
+}
+
+function render() {
+  renderConnection();
+  renderWeeks();
+  renderDaily();
+}
+
+$('previous-week').addEventListener('click', () => {
+  const current = weekStart(state.selected);
+  const items = weeks();
+  const target = items[items.indexOf(current) - 1];
+  if (target) navigate(target);
+});
+$('next-week').addEventListener('click', () => {
+  const current = weekStart(state.selected);
+  const items = weeks();
+  const target = items[items.indexOf(current) + 1];
+  if (target) navigate(target);
+});
+$('week-select').addEventListener('change', (event) => navigate(event.target.value));
+$('today').addEventListener('click', () => navigate(state.today));
+window.addEventListener('popstate', () => {
+  const day = new URLSearchParams(location.search).get('tag');
+  navigate(isISODate(day) ? day : state.today, 'none');
+});
+window.addEventListener('online', renderConnection);
+window.addEventListener('offline', renderConnection);
+setInterval(() => {
+  const current = berlinToday();
+  if (current !== state.today) {
+    const wasToday = state.selected === state.today;
+    state.today = current;
+    if (wasToday) navigate(current, 'replace');
+    else render();
+  }
+}, 60_000);
+
+try {
+  const response = await fetch('./data/menu.json', { cache: 'no-store' });
+  if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  state.offlineCopy = response.headers.get('X-Offline-Copy') === 'yes';
+  const data = await response.json();
+  if (data.schema !== 1 || !data.days || !data.sources) throw new Error('Unbekanntes Datenformat');
+  state.data = data;
+} catch (error) {
+  console.error('Speiseplan konnte nicht geladen werden:', error);
+  state.loadError = true;
+}
+render();
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js').catch((error) => console.warn('Offline-Modus nicht verfügbar:', error));
+}

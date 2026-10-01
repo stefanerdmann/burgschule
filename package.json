@@ -1,0 +1,6 @@
+{
+  "private": true,
+  "description": "Dev-only DOM tests; the published app has no npm dependencies.",
+  "scripts": { "test": "node --test tests/*.mjs" },
+  "devDependencies": { "happy-dom": "20.14.5" }
+}

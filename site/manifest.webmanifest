@@ -1,0 +1,15 @@
+{
+  "name": "Speiseplan – Burgschule Nieder-Olm (inoffiziell)",
+  "short_name": "Speiseplan",
+  "description": "Mobil lesbarer Speiseplan der Burgschule Nieder-Olm, unabhängig von der Schule.",
+  "lang": "de",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fffefa",
+  "theme_color": "#113a36",
+  "icons": [
+    { "src": "./icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

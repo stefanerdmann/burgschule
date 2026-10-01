@@ -1,0 +1,31 @@
+# Python environments and generated files
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+
+# Local secrets and credentials (keep example templates trackable)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local-only project notes, agent/session data and deployment tooling
+/PROJEKTPLAN.md
+.agents/
+.netlify/
+
+# Build output, test coverage and logs
+node_modules/
+dist/
+build/
+coverage/
+.coverage
+*.log
+npm-debug.log*
+
+# Local import diagnostics and OS metadata
+import-warnings.json
+.DS_Store
