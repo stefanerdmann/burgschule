@@ -2,9 +2,13 @@ import { addDays, berlinToday, formatDate, isISODate, weekStart } from './date-u
 
 const $ = (id) => document.getElementById(id);
 const menu = $('menu');
-const state = { data: null, today: berlinToday(), selected: null, offlineCopy: false, loadError: false };
 const supplied = new URLSearchParams(location.search).get('tag');
-state.selected = isISODate(supplied) ? supplied : state.today;
+const today = berlinToday();
+const state = {
+  data: null, today, selected: isISODate(supplied) ? supplied : today,
+  week: weekStart(isISODate(supplied) ? supplied : today),
+  screen: 'day', offlineCopy: false, loadError: false,
+};
 
 function schoolLink(value) {
   try {
@@ -18,18 +22,6 @@ function weeks() {
     .map(weekStart))].sort();
 }
 
-function navigate(day, historyMode = 'push') {
-  if (!isISODate(day)) return;
-  state.selected = day;
-  if (historyMode !== 'none') {
-    const url = new URL(location.href);
-    if (day === state.today) url.searchParams.delete('tag');
-    else url.searchParams.set('tag', day);
-    window.history[historyMode === 'replace' ? 'replaceState' : 'pushState']({}, '', url);
-  }
-  render();
-}
-
 function element(tag, className, text) {
   const node = document.createElement(tag);
   if (className) node.className = className;
@@ -37,37 +29,92 @@ function element(tag, className, text) {
   return node;
 }
 
-function renderWeeks() {
+function showScreen(screen) {
+  state.screen = screen;
+  if (screen === 'week') state.week = weekStart(state.selected);
+  for (const name of ['day', 'week', 'info']) $(`screen-${name}`).hidden = name !== screen;
+  for (const button of document.querySelectorAll('.tab')) {
+    const active = button.dataset.screen === screen;
+    button.classList.toggle('active', active);
+    if (active) button.setAttribute('aria-current', 'page');
+    else button.removeAttribute('aria-current');
+  }
+  if (screen === 'week') renderWeek();
+  window.scrollTo?.({ top: 0, behavior: 'auto' });
+}
+
+function navigate(day, historyMode = 'push') {
+  if (!isISODate(day)) return;
+  const changed = day !== state.selected;
+  state.selected = day;
+  state.week = weekStart(day);
+  if (historyMode !== 'none' && (changed || historyMode === 'replace')) {
+    const url = new URL(location.href);
+    if (day === state.today) url.searchParams.delete('tag');
+    else url.searchParams.set('tag', day);
+    window.history[historyMode === 'replace' ? 'replaceState' : 'pushState']({}, '', url);
+  }
+  showScreen('day');
+  render();
+}
+
+function dayStatus(day) {
+  const status = state.data?.days[day]?.status;
+  if (status === 'ok') return 'Plan vorhanden';
+  if (status === 'uncertain') return 'Eintrag nicht eindeutig';
+  return 'Kein Speiseplan';
+}
+
+function renderStrip() {
   const current = weekStart(state.selected);
-  const items = weeks();
-  const index = items.indexOf(current);
-  const finish = addDays(current, 6);
-  $('week-range').textContent = `${formatDate(current, { day: 'numeric', month: 'short' })} – ${formatDate(finish, { day: 'numeric', month: 'short', year: 'numeric' })}`;
-  $('previous-week').disabled = index <= 0;
-  $('next-week').disabled = index >= items.length - 1;
-  const select = $('week-select');
-  select.replaceChildren(...items.map((week) => {
-    const option = element('option', '', `${formatDate(week, { day: 'numeric', month: 'short' })} – ${formatDate(addDays(week, 6), { day: 'numeric', month: 'short', year: 'numeric' })}`);
-    option.value = week;
-    return option;
-  }));
-  select.value = current;
   const list = $('days');
   list.replaceChildren(...Array.from({ length: 7 }, (_, offset) => {
     const day = addDays(current, offset);
     const button = element('button', `day${state.data?.days[day]?.status === 'ok' ? ' available' : ''}${day === state.selected ? ' selected' : ''}${day === state.today ? ' today' : ''}`);
     button.type = 'button';
-    button.setAttribute('aria-label', formatDate(day) + (state.data?.days[day]?.status === 'ok' ? ', Speiseplan vorhanden' : ', kein Speiseplan'));
+    button.setAttribute('aria-label', `${formatDate(day)}, ${dayStatus(day)}`);
     if (day === state.selected) button.setAttribute('aria-current', 'date');
-    button.append(element('span', 'day-name', formatDate(day, { weekday: 'short' })), element('span', 'day-number', day.slice(-2)));
+    button.append(element('span', 'day-name', formatDate(day, { weekday: 'short' })), element('span', 'day-number', String(Number(day.slice(-2)))));
     button.addEventListener('click', () => navigate(day));
     return button;
+  }));
+  // Keep the selected day visible on narrow phones (especially Saturday/Sunday).
+  const selected = list.querySelector('.selected');
+  if (selected) list.scrollLeft = Math.max(0, selected.offsetLeft - list.offsetLeft - (list.clientWidth - selected.clientWidth) / 2);
+}
+
+function renderWeek() {
+  const items = weeks();
+  const index = items.indexOf(state.week);
+  const finish = addDays(state.week, 6);
+  const range = (week) => `${formatDate(week, { day: 'numeric', month: 'short' })} – ${formatDate(addDays(week, 6), { day: 'numeric', month: 'short', year: 'numeric' })}`;
+  $('week-range').textContent = range(state.week);
+  $('previous-week').disabled = index <= 0;
+  $('next-week').disabled = index >= items.length - 1;
+  const select = $('week-select');
+  select.replaceChildren(...items.map((week) => {
+    const option = element('option', '', range(week));
+    option.value = week;
+    return option;
+  }));
+  select.value = state.week;
+  $('week-days').replaceChildren(...Array.from({ length: 7 }, (_, offset) => {
+    const day = addDays(state.week, offset);
+    const row = element('button', `week-day${day === state.today ? ' today' : ''}`);
+    row.type = 'button';
+    row.setAttribute('aria-label', `${formatDate(day)}, ${dayStatus(day)}, anzeigen`);
+    const date = element('span', 'week-day-date');
+    date.append(element('strong', '', formatDate(day, { weekday: 'long' })), element('small', '', formatDate(day, { day: 'numeric', month: 'long' })));
+    const status = element('span', `week-day-status${state.data?.days[day]?.status === 'ok' ? ' available' : ''}`, dayStatus(day));
+    row.append(date, status, element('span', 'chevron', '›'));
+    row.addEventListener('click', () => navigate(day));
+    return row;
   }));
 }
 
 function card(title, dish, variant, note) {
   const article = element('article', `menu-card ${variant}`);
-  article.append(element('h3', '', title), element('p', '', dish));
+  article.append(element('h2', '', title), element('p', '', dish));
   if (note) article.append(element('p', 'reference', note));
   return article;
 }
@@ -79,10 +126,12 @@ function empty(title, details) {
 }
 
 function renderDaily() {
-  const today = state.selected === state.today;
-  $('date-context').textContent = today ? 'HEUTE AUF DEM SPEISEPLAN' : 'SPEISEPLAN FÜR DIESEN TAG';
-  $('selected-date').textContent = formatDate(state.selected);
-  $('today').hidden = today;
+  const current = state.selected === state.today;
+  $('view-title').textContent = current ? 'Heute' : formatDate(state.selected, { weekday: 'long' });
+  const selectedDate = $('selected-date');
+  selectedDate.textContent = formatDate(state.selected, { day: 'numeric', month: 'long', year: 'numeric' });
+  selectedDate.dateTime = state.selected;
+  $('today').hidden = current;
   const entry = state.data?.days[state.selected];
   if (entry?.status === 'ok') {
     menu.replaceChildren(
@@ -106,12 +155,14 @@ function renderDaily() {
   const source = entry?.source && sources[entry.source]
     ? sources[entry.source]
     : Object.values(sources).sort((a, b) => b.end.localeCompare(a.end))[0];
-  if (state.data?.checked_at) {
-    const checked = new Date(state.data.checked_at);
-    provenance.append(element('div', '', `Daten zuletzt geprüft: ${new Intl.DateTimeFormat('de-DE', { timeZone: 'Europe/Berlin', dateStyle: 'medium', timeStyle: 'short' }).format(checked)} Uhr.`));
-  }
+  const checked = state.data?.checked_at ? new Date(state.data.checked_at) : null;
+  if (checked && !Number.isNaN(checked.getTime())) {
+    const label = `Daten zuletzt geprüft: ${new Intl.DateTimeFormat('de-DE', { timeZone: 'Europe/Berlin', dateStyle: 'medium', timeStyle: 'short' }).format(checked)} Uhr.`;
+    provenance.append(element('p', '', label));
+    $('info-status').textContent = label;
+  } else $('info-status').textContent = 'Kein Prüfzeitpunkt verfügbar.';
   if (source) {
-    provenance.append(element('div', '', `Originalplan: ${formatDate(source.start, { day: 'numeric', month: 'numeric', year: 'numeric' })} – ${formatDate(source.end, { day: 'numeric', month: 'numeric', year: 'numeric' })}.`));
+    provenance.append(element('p', '', `Originalplan: ${formatDate(source.start, { day: 'numeric', month: 'numeric', year: 'numeric' })} – ${formatDate(source.end, { day: 'numeric', month: 'numeric', year: 'numeric' })}.`));
   }
   const pdf = source?.url || state.data?.fallback_pdf?.url;
   const href = schoolLink(pdf || state.data?.school_url || 'https://burgschule-nieder-olm.de/aktuelles/');
@@ -138,24 +189,32 @@ function renderConnection() {
 
 function render() {
   renderConnection();
-  renderWeeks();
+  renderStrip();
+  renderWeek();
   renderDaily();
 }
 
 $('previous-week').addEventListener('click', () => {
-  const current = weekStart(state.selected);
   const items = weeks();
-  const target = items[items.indexOf(current) - 1];
-  if (target) navigate(target);
+  state.week = items[items.indexOf(state.week) - 1] || state.week;
+  renderWeek();
 });
 $('next-week').addEventListener('click', () => {
-  const current = weekStart(state.selected);
   const items = weeks();
-  const target = items[items.indexOf(current) + 1];
-  if (target) navigate(target);
+  state.week = items[items.indexOf(state.week) + 1] || state.week;
+  renderWeek();
 });
-$('week-select').addEventListener('change', (event) => navigate(event.target.value));
+$('week-select').addEventListener('change', (event) => {
+  if (weeks().includes(event.target.value)) {
+    state.week = event.target.value;
+    renderWeek();
+  }
+});
+$('open-week').addEventListener('click', () => showScreen('week'));
 $('today').addEventListener('click', () => navigate(state.today));
+for (const button of document.querySelectorAll('.tab')) {
+  button.addEventListener('click', () => button.dataset.screen === 'day' ? navigate(state.today) : showScreen(button.dataset.screen));
+}
 window.addEventListener('popstate', () => {
   const day = new URLSearchParams(location.search).get('tag');
   navigate(isISODate(day) ? day : state.today, 'none');

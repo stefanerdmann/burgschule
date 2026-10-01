@@ -1,6 +1,6 @@
 # Speiseplan Burgschule Nieder-Olm (inoffiziell)
 
-Mobile-first-PWA, die öffentlich verlinkte Speiseplan-PDFs der Schule **einmal täglich** einliest und als statische Netlify-Seite bereitstellt.
+Mobile-first-PWA, die öffentlich verlinkte Speiseplan-PDFs der Schule **einmal täglich** einliest und als statische Netlify-Seite bereitstellt. Auf dem Handy öffnet sich direkt die Tagesansicht; unten führen Tabs zu Heute, Woche und Info. Die Tagesleiste lässt sich horizontal scrollen, Tageslinks bleiben über `?tag=JJJJ-MM-TT` teilbar.
 
 **Stand 29.09.2026:** Die geprüfte PDF umfasst 10.08.–02.10.2026 (40 Tage). Der 12.08. ist gesperrt, weil Menü II im Original-PDF unvollständig geklammert ist; alle anderen 39 Tage wurden positionsbasiert extrahiert. Der Parser prüft alle Tage automatisch, aber ohne unabhängige Referenz ist eine plausibel wirkende Fehlzuordnung nicht völlig auszuschließen. Allergenkürzel werden originalgetreu angezeigt, nicht interpretiert.
 

@@ -34,20 +34,43 @@ test('mobile app renders dishes, blocks uncertain days and navigates dates', asy
     assert.match(window.document.querySelector('#menu').textContent, /Gyros aus der Hühnerbrust/);
     assert.match(window.document.querySelector('#menu').textContent, /Vegetarisches Gyros/);
     assert.match(window.document.querySelector('#menu').textContent, /Tafeltrauben/);
-    assert.equal(window.document.querySelector('#week-select').value, '2026-09-28');
+    assert.equal(window.document.querySelector('#screen-week').hidden, true);
+    assert.equal(window.document.querySelector('#screen-info').hidden, true);
+    assert.equal(window.document.querySelector('.tab[data-screen="day"]').getAttribute('aria-current'), 'page');
     assert.match(window.document.querySelector('#provenance a').href, /^https:\/\/burgschule-nieder-olm.de\//);
 
     window.document.querySelectorAll('.day')[6].click();
     assert.equal(new URL(window.location.href).searchParams.get('tag'), '2026-10-04');
     assert.match(window.document.querySelector('#menu').textContent, /Wochenende/);
+    window.document.querySelector('#open-week').click();
+    assert.equal(window.document.querySelector('#screen-day').hidden, true);
+    assert.equal(window.document.querySelector('#screen-week').hidden, false);
+    assert.equal(window.document.querySelector('#week-select').value, '2026-09-28');
     window.document.querySelector('#previous-week').click();
+    assert.equal(window.document.querySelector('#week-select').value, '2026-09-21');
+    assert.equal(new URL(window.location.href).searchParams.get('tag'), '2026-10-04');
+    window.document.querySelector('#week-days .week-day').click();
     assert.equal(new URL(window.location.href).searchParams.get('tag'), '2026-09-21');
+    assert.equal(window.document.querySelector('#screen-day').hidden, false);
+    assert.match(window.document.querySelector('#menu').textContent, /Suppe/);
+
+    window.document.querySelector('.tab[data-screen="week"]').click();
     window.document.querySelector('#week-select').value = '2026-08-10';
     window.document.querySelector('#week-select').dispatchEvent(new window.Event('change'));
-    const blocked = [...window.document.querySelectorAll('.day')].find((day) => day.textContent.includes('12'));
+    const blocked = [...window.document.querySelectorAll('#week-days .week-day')].find((day) => day.textContent.includes('12. August'));
     blocked.click();
+    assert.equal(new URL(window.location.href).searchParams.get('tag'), '2026-08-12');
     assert.match(window.document.querySelector('#menu').textContent, /kein verlässlich ausgelesener Plan/);
     assert.ok(!window.document.querySelector('#menu').textContent.includes('Putenmedaillon'));
+
+    window.document.querySelector('.tab[data-screen="info"]').click();
+    assert.equal(window.document.querySelector('#screen-info').hidden, false);
+    assert.ok(window.document.querySelector('#screen-day').hidden);
+    assert.ok(window.document.querySelector('.tab[data-screen="info"]').hasAttribute('aria-current'));
+    assert.ok(window.document.querySelector('a[href="./impressum.html"]'));
+    window.document.querySelector('.tab[data-screen="day"]').click();
+    assert.equal(window.document.querySelector('#screen-day').hidden, false);
+    assert.equal(new URL(window.location.href).searchParams.has('tag'), false);
   } finally {
     globalThis.setInterval = oldInterval;
     window.close();

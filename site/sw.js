@@ -1,7 +1,8 @@
-const CACHE = 'burgschule-speiseplan-v1';
+const CACHE = 'burgschule-speiseplan-v2';
 const CORE = [
   './', './index.html', './styles.css', './app.mjs', './date-utils.mjs',
-  './manifest.webmanifest', './data/menu.json', './icons/icon.svg', './icons/icon-192.png', './icons/icon-512.png',
+  './impressum.html', './datenschutz.html', './manifest.webmanifest', './data/menu.json',
+  './icons/icon.svg', './icons/icon-192.png', './icons/icon-512.png',
 ];
 
 self.addEventListener('install', (event) => {
@@ -18,8 +19,12 @@ self.addEventListener('fetch', (event) => {
   if (request.method !== 'GET' || new URL(request.url).origin !== self.location.origin) return;
   event.respondWith((async () => {
     const cache = await caches.open(CACHE);
-    const isData = new URL(request.url).pathname.endsWith('/data/menu.json');
-    const key = request.mode === 'navigate' ? new URL('./index.html', self.registration.scope).href : request.url;
+    const path = new URL(request.url).pathname;
+    const isData = path.endsWith('/data/menu.json');
+    const legal = path.endsWith('/impressum.html') || path.endsWith('/datenschutz.html');
+    const key = request.mode === 'navigate'
+      ? (legal ? new URL(path, self.location.origin).href : new URL('./index.html', self.registration.scope).href)
+      : request.url;
     try {
       const response = await fetch(request);
       if (response.ok) await cache.put(key, response.clone());
