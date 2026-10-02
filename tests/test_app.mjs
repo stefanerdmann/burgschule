@@ -8,8 +8,9 @@ test('mobile app renders dishes, blocks uncertain days and navigates dates', asy
   // UI fixture is independent of the live PDF; tests must still pass after the
   // real 2026 plan expires and the published JSON is intentionally emptied.
   const url = 'https://burgschule-nieder-olm.de/wp-content/uploads/plan.pdf';
+  const timestamp = '2026-09-29T09:00:00Z';
   const data = {
-    schema: 1, checked_at: new Date().toISOString(), sources: {
+    schema: 1, checked_at: timestamp, sources: {
       [url]: { url, start: '2026-08-10', end: '2026-10-02' },
     },
     days: {
@@ -21,8 +22,14 @@ test('mobile app renders dishes, blocks uncertain days and navigates dates', asy
   const window = new Window({ url: 'https://example.org/?tag=2026-09-29', settings: { disableJavaScriptEvaluation: true } });
   window.document.write(html);
   const oldInterval = globalThis.setInterval;
+  const realDate = globalThis.Date;
+  class TestDate extends realDate {
+    constructor(...args) { super(...(args.length ? args : [timestamp])); }
+    static now() { return realDate.parse(timestamp); }
+  }
   try {
     Object.defineProperties(globalThis, {
+      Date: { configurable: true, value: TestDate },
       document: { configurable: true, value: window.document },
       window: { configurable: true, value: window },
       location: { configurable: true, value: window.location },
@@ -30,7 +37,7 @@ test('mobile app renders dishes, blocks uncertain days and navigates dates', asy
       fetch: { configurable: true, value: async () => new Response(JSON.stringify(data), { status: 200 }) },
       setInterval: { configurable: true, value: () => 0 },
     });
-    await import('../site/app.mjs');
+    await import('../site/app.mjs?weekday-test');
     assert.match(window.document.querySelector('#menu').textContent, /Gyros aus der Hühnerbrust/);
     assert.match(window.document.querySelector('#menu').textContent, /Vegetarisches Gyros/);
     assert.match(window.document.querySelector('#menu').textContent, /Tafeltrauben/);
@@ -74,6 +81,7 @@ test('mobile app renders dishes, blocks uncertain days and navigates dates', asy
     assert.equal(window.document.querySelector('#screen-day').hidden, false);
     assert.equal(new URL(window.location.href).searchParams.has('tag'), false);
   } finally {
+    globalThis.Date = realDate;
     globalThis.setInterval = oldInterval;
     window.close();
   }
