@@ -1,11 +1,338 @@
 {
   "schema": 1,
-  "checked_at": "2026-10-20T11:12:26+00:00",
+  "checked_at": "2026-10-21T11:27:11+00:00",
   "school_url": "https://burgschule-nieder-olm.de/aktuelles/",
   "fallback_pdf": {
-    "url": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/08/VBG_Nieder-Olm_Speiseplan_8-Wochen.pdf",
-    "label": "Speiseplan vom 10.8.26 bis 2.10.26"
+    "url": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf",
+    "label": "Speiseplan vom 19.10.26 bis 11.12.26"
   },
-  "sources": {},
-  "days": {}
+  "sources": {
+    "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf": {
+      "url": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf",
+      "page": "https://burgschule-nieder-olm.de/aktuelles/",
+      "label": "Speiseplan vom 19.10.26 bis 11.12.26",
+      "sha256": "d95493693d996c5f4c74ba2801a66f1c637e3e51b8ae0543d1a07537b2906d34",
+      "start": "2026-10-19",
+      "end": "2026-12-11"
+    }
+  },
+  "days": {
+    "2026-10-19": {
+      "status": "ok",
+      "menu_i": "Bio-Vollkorn-Penne mit Tomatensauce",
+      "menu_ii": "Bio-Vollkorn-Penne mit Tomatensauce",
+      "dessert": "frische Birne von der Obstbaumplantage",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-10-20": {
+      "status": "ok",
+      "menu_i": "Zucchinicreme-Suppe (c) mit Croutons, Roggenvollkornbrot (a2, a1) und Rohkost",
+      "menu_ii": "Zucchinicreme-Suppe (c) mit Croutons, Roggenvollkornbrot (a2, a1) und Rohkost",
+      "dessert": "Kuchendessert",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-10-21": {
+      "status": "ok",
+      "menu_i": "Putenmedaillon (G) mit Bechamelsauce (c), Kartoffelspalten aus dem Ofen und Salatvariation mit hausgemachtem Dressing (c, e, k)",
+      "menu_ii": "Valessschnitzel (vegi) mit Bechamelsauce (c), Kartoffelspalten aus dem Ofen und Salatvariation (c, e, k)",
+      "dessert": "frischer Obstsalat",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-10-22": {
+      "status": "ok",
+      "menu_i": "Gnocchi-Auflauf mit Spinat, Tomaten und Hirtenkäse (a1, b, c)",
+      "menu_ii": "Gnocchi-Auflauf mit Spinat, Tomaten und Hirtenkäse (a1, b, c)",
+      "dessert": "Heidelbeerjoghurt",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-10-23": {
+      "status": "ok",
+      "menu_i": "Ofen-Fischnuggets aus Seelachs (F) (d, a1, b, c) mit Kräuterkartoffeln (c) und Erbsen-Karotten-Gemüse (a1, c)",
+      "menu_ii": "vegetarische Fischnuggets auf Gemüsebasis (d, a1, b, c) mit Kräuterkartoffeln (c) und Erbsen-Karotten-Gemüse (a1, c)",
+      "dessert": "Obst vom Markt nach Tagesangebot",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-10-26": {
+      "status": "ok",
+      "menu_i": "Mutter's Möhreneintopf mit Lauch und Kartoffeln, dazu Vollkornbrot (a1)",
+      "menu_ii": "Mutter's Möhreneintopf mit Lauch und Kartoffeln, dazu Vollkornbrot (a1)",
+      "dessert": "Grießpudding",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-10-27": {
+      "status": "ok",
+      "menu_i": "Putenschnitzel (G) „Wiener-Art“ (a1, b, c) aus dem Ofen, Butterkartoffeln (c) und Gurkensalat mit Dill-Joghurt-Dressing (c)",
+      "menu_ii": "vegetarisches Schnitzel (a1, b, c, g), Butterkartoffeln (c) und Gurkensalat mit Dill-Joghurt-Dressing (c)",
+      "dessert": "Sonnengereifter Apfel",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-10-28": {
+      "status": "ok",
+      "menu_i": "Vollkorn-Pasta (a1) mit Pilzrahmsauce (a1, c) und frischer Petersilie, Blattsalat mit hausgemachtem Dressing (c, e, k)",
+      "menu_ii": "Vollkorn-Pasta (a1) mit Pilzrahmsauce (a1, c) und frischer Petersilie, Blattsalat mit hausgemachtem Dressing (c, e, k)",
+      "dessert": "hausgemachter Fruchtjoghurt",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-10-29": {
+      "status": "ok",
+      "menu_i": "Fischfrikadelle, mit Kartoffelpüree, weißer Kräutersauce und Rohkoststicks",
+      "menu_ii": "vegetarische Fischfrikadelle, mit Kartoffelpüree, weißer Kräutersauce und Rohkoststicks",
+      "dessert": "Bananen",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-10-30": {
+      "status": "ok",
+      "menu_i": "Brokkoli-Medaillon (a1, b, c) mit Kohlrabi-Erbsengemüse à la Crème und Ofen-Kroketten",
+      "menu_ii": "Brokkoli-Medaillon (a1, b, c) mit Kohlrabi-Erbsengemüse à la Crème und Ofen-Kroketten",
+      "dessert": "Apfel-Quark-Dessert",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-11-02": {
+      "status": "ok",
+      "menu_i": "Vollkornspiralnudeln (a1) mit Tomaten-Käse-Soße (c, k), Blattsalat mit Dressing (c, e, k)",
+      "menu_ii": "Vollkornspiralnudeln (a1) mit Tomaten-Käse-Soße (c, k), Blattsalat mit Dressing (c, e, k)",
+      "dessert": "Pflaumen",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-11-03": {
+      "status": "ok",
+      "menu_i": "deftiger Gemüseeintopf mit geschnittenen Wiener Würstchen (apart), Vollkornbrot (a1)",
+      "menu_ii": "deftiger Gemüseeintopf mit geschnittenen Wiener Würstchen (apart), Vollkornbrot (a1)",
+      "dessert": "Schokoladenpudding",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-11-04": {
+      "status": "ok",
+      "menu_i": "Frikadelle vom Rind (R) mit einer leichten Zwiebel-Senfsoße (c, e), Dampfkartoffeln und Krautsalat",
+      "menu_ii": "Gemüsetaler (a1, b, c) mit einer leichten Zwiebel-Senfsoße (c, e), Dampfkartoffeln und Krautsalat",
+      "dessert": "Sonnengereifter Apfel",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-11-05": {
+      "status": "ok",
+      "menu_i": "gebratener weißer Reis mit knackigem Wokgemüse und Joghurt Dip (2)",
+      "menu_ii": "gebratener weißer Reis mit knackigem Wokgemüse und Joghurt Dip (2)",
+      "dessert": "Rote Grütze mit Vanillesauce",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-11-06": {
+      "status": "ok",
+      "menu_i": "Seelachsfilet (F) mit Spinatsauce (c), Vollkornnudeln (a1) und gebratenem Kirschtomaten-Paprika-Gemüse",
+      "menu_ii": "Gemüsemaultaschen mit Spinatsauce (c) und gebratenem Kirschtomaten-Paprika-Gemüse",
+      "dessert": "Großmutter's Apfelkompott",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-11-09": {
+      "status": "ok",
+      "menu_i": "Kartoffel-Kohlrabi-Eintopf (a1, k) mit Vollkornbrot (a1), und Rohkoststicks",
+      "menu_ii": "Kartoffel-Kohlrabi-Eintopf (a1, k) mit Vollkornbrot (a1), und Rohkoststicks",
+      "dessert": "frischer Pfirsich",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-11-10": {
+      "status": "ok",
+      "menu_i": "Hühnergeschnetzeltes (G) in Rahmsauce (a1, c) mit gebratenem Zucchini-Gemüse und Naturreis",
+      "menu_ii": "vegetarisches Geschnetzeltes (G) in Rahmsauce (a1, c) mit gebratenem Zucchini-Gemüse und Naturreis",
+      "dessert": "Fruchtquark",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-11-11": {
+      "status": "ok",
+      "menu_i": "Tomaten-Spinat-Lasagne (a1, c) und Salat mit Dressing (c, e, k)",
+      "menu_ii": "Tomaten-Spinat-Lasagne (a1, c) und Salat mit Dressing (c, e, k)",
+      "dessert": "hausgemachter Obstjoghurt",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-11-12": {
+      "status": "ok",
+      "menu_i": "paniertes Fischfilet (F) mit Schnittlauchsauce (c), Butterkartoffeln und Karotten-Gemüse",
+      "menu_ii": "Mildes Chili sin Carne mit Fladenbrot",
+      "dessert": "Mirabellen",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-11-13": {
+      "status": "ok",
+      "menu_i": "Gemüsefrikadelle (a1, b) mit Rahmsauce (2) und Gemüse-Reis (a1)",
+      "menu_ii": "Gemüsefrikadelle (a1, b) mit Rahmsauce (2) und Gemüse-Reis (a1)",
+      "dessert": "Obstauswahl",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-11-16": {
+      "status": "ok",
+      "menu_i": "Bio-Vollkorn-Spinatravioli (a1, k) mit Gemüse-Käse-Soße (c, k) und Blattsalate mit Hausdressing (c, e, k)",
+      "menu_ii": "Bio-Vollkorn-Spinatravioli (a1, k) mit Gemüse-Käse-Soße (c, k) und Blattsalate mit Hausdressing (c, e, k)",
+      "dessert": "Sonnengereifter Apfel",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-11-17": {
+      "status": "ok",
+      "menu_i": "Puten-Paprika-Rahmgulasch (G) (a1, c, k) mit Butterreis und Rote-Beete-Salat",
+      "menu_ii": "Kartoffel-Gulasch (a1, c, k) mit Butterreis und Rote-Beete-Salat",
+      "dessert": "Kirschquark",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-11-18": {
+      "status": "ok",
+      "menu_i": "Tomatensuppe (c, k) mit Grießnocken und Vollkornbrot (a1)",
+      "menu_ii": "Tomatensuppe (c, k) mit Grießnocken und Vollkornbrot (a1)",
+      "dessert": "Rhabarberkompott",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-11-19": {
+      "status": "ok",
+      "menu_i": "Rahmspinat (c) mit Salzkartoffeln und Rührei, dazu Rohkoststicks",
+      "menu_ii": "Rahmspinat (c) mit Salzkartoffeln und Rührei, dazu Rohkoststicks",
+      "dessert": "hausgemachter Fruchtjoghurt",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-11-20": {
+      "status": "ok",
+      "menu_i": "Seelachs in Backteig (F) (a1, b) in Kräutersoße (a1, c), Bio-Reis und saisonales Buttergemüse",
+      "menu_ii": "vegetarische Fischnuggets in Kräutersoße (a1, c), Bio-Reis und saisonales Buttergemüse",
+      "dessert": "frische Birne von der Obstbaumplantage",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-11-23": {
+      "status": "ok",
+      "menu_i": "deftiger Kartoffeleintopf (k) Vollkornbrot (a1) und Rohkoststicks",
+      "menu_ii": "deftiger Kartoffeleintopf (k) Vollkornbrot (a1) und Rohkoststicks",
+      "dessert": "Bananen",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-11-24": {
+      "status": "ok",
+      "menu_i": "Vollkorn-Pasta-Mista (gemischte Vollkornnudeln) (a1) mit Gemüsebolognese und geriebenem Käse (c)",
+      "menu_ii": "Vollkorn-Pasta-Mista (gemischte Vollkornnudeln) (a1) mit Gemüsebolognese und geriebenem Käse (c)",
+      "dessert": "Kuchendessert",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-11-25": {
+      "status": "ok",
+      "menu_i": "Putengeschnetzeltes (G) (c, k) mit Vollkorn-Spätzle (a1, b) dazu Salat mit Dressing (c, e, k)",
+      "menu_ii": "Tofu-Geschnetzeltes (a1, g, c, k) mit Spätzle (a1, b) dazu Salat mit Dressing (c, e, k)",
+      "dessert": "saisonaler Obstkorb",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-11-26": {
+      "status": "ok",
+      "menu_i": "Risoléekartoffeln (kleine Kartoffeln ohne Schale) mit Kräuterquark (c) und Rohkost",
+      "menu_ii": "Risoléekartoffeln (kleine Kartoffeln ohne Schale) mit Kräuterquark (c) und Rohkost",
+      "dessert": "Beerenjoghurt",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-11-27": {
+      "status": "ok",
+      "menu_i": "Lachsfilet aus dem Ofen (F) mit Petersilien-Zitronen-Soße (f, g) Langkorn-Naturreis und Wok-Gemüse (f, g)",
+      "menu_ii": "Zartweizen-Gemüsepfanne mit Paprika- und Tomatenwürfel und tomatisierter Béchamelsauce",
+      "dessert": "Sonnengereifter Apfel",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-11-30": {
+      "status": "ok",
+      "menu_i": "Schupfnudeln (a1, b,) mit einer cremigen Tomaten-Frischkäsesoße (c) und Rohkost",
+      "menu_ii": "Schupfnudeln (a1, b,) mit einer cremigen Tomaten-Frischkäsesoße (c) und Rohkost",
+      "dessert": "Birnen",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-12-01": {
+      "status": "ok",
+      "menu_i": "Rinderbolognese (R) (k), Vollkornnudeln (a1), Parmesan (c) und Mix-Salat und Dressing (c, e, k)",
+      "menu_ii": "vegetarische Bolognese auf Sojabasis (a1, g, k), Nudeln (a1), Parmesan (c) und Mix-Salat und Dressing (c, e, k)",
+      "dessert": "Fruchtjoghurt",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-12-02": {
+      "status": "ok",
+      "menu_i": "Minestrone (ital. Gemüsesuppe mit Reis) (c, e, k) mit Vollkornbrot (a1)",
+      "menu_ii": "Minestrone (ital. Gemüsesuppe mit Reis) (c, e, k) mit Vollkornbrot (a1)",
+      "dessert": "Milchreisdessert mit Kirschen",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-12-03": {
+      "status": "ok",
+      "menu_i": "Hausgemachte Vollkorn-Blechpizza Magherita (a1, c) und Blattsalat mit Hausdressing (c, e, k)",
+      "menu_ii": "Hausgemachte Vollkorn-Blechpizza Magherita (a1, c) und Blattsalat mit Hausdressing (c, e, k)",
+      "dessert": "Apfelkompott mit Stückchen",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-12-04": {
+      "status": "ok",
+      "menu_i": "Pangasiusfilet (F) mit Kräutersoße (c), Kartoffelstampf (c) und grünen Erbsen",
+      "menu_ii": "Rote Beete Bratling mit Kräutersoße (c), Kartoffelstampf (c) und grünen Erbsen",
+      "dessert": "Griechischer Joghurt mit Honig",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-12-07": {
+      "status": "uncertain",
+      "reason": "Vegetarisches Menü verweist auf Fleisch/Fisch",
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-12-08": {
+      "status": "ok",
+      "menu_i": "Käsespätzle (a1, b, c) und crémiger Joghurt-Gurkensalat (c, e, k)",
+      "menu_ii": "Käsespätzle (a1, b, c) und crémiger Joghurt-Gurkensalat (c, e, k)",
+      "dessert": "Waldbeerengrütze",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-12-09": {
+      "status": "ok",
+      "menu_i": "Gyros aus der Hühnerbrust (G) mit Langkorn-Naturreis und Zaziki (c, Kb) und Rohkost",
+      "menu_ii": "Vegetarisches Gyros (a1, g) mit Basmatireis und Zaziki (c, Kb) und Rohkost",
+      "dessert": "Sonnegereifter Apfel",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-12-10": {
+      "status": "ok",
+      "menu_i": "Kartoffelpuffer (a1, b) mit Apfelmus und Gurkensticks",
+      "menu_ii": "Kartoffelpuffer (a1, b) mit Apfelmus und Gurkensticks",
+      "dessert": "Erdbeerquark",
+      "menu_ii_from_i": true,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    },
+    "2026-12-11": {
+      "status": "ok",
+      "menu_i": "Ofen-Fischnuggets aus Seelachs (F) (d, a1, b, c) mit Kräuterkartoffeln (c) und Erbsen-Karotten-Gemüse (a1, c)",
+      "menu_ii": "vegetarische Fischnuggets auf Gemüsebasis (d, a1, b, c) mit Kräuterkartoffeln (c) und Erbsen-Karotten-Gemüse (a1, c)",
+      "dessert": "Pflaumenkompott",
+      "menu_ii_from_i": false,
+      "source": "https://burgschule-nieder-olm.de/wp-content/uploads/2026/10/VBG_Nieder-Olm_Speiseplan_8-Wochen_19.10.-11.12.2026.pdf"
+    }
+  }
 }
